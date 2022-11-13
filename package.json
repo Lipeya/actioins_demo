@@ -12,7 +12,7 @@
     "ts-node": "^10.9.1"
   },
   "scripts": {
-    "start": "nodemon src/app.ts"
+    "start": "node src/app.ts"
   },
   "devDependencies": {
     "@types/node": "^18.7.23",
