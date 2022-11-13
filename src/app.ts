@@ -1,5 +1,4 @@
-import express from "express";
-import cookieParser from "cookie-parser";
+const express = require("express");
 const port = 8000;
 const app = express();
 
@@ -8,7 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
-app.use(cookieParser());
 
 app.use("/",(req,res,next)=>{
   res.send("hello");
