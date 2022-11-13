@@ -4,5 +4,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 RUN apt-get update
 RUN apt-get -y install npm
-ADD . /
+RUN mkdir /usr/app
+WORKDIR /usr/app
+ADD . /usr/app
+RUN npm i
 ENTRYPOINT npm start
