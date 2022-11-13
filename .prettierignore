@@ -1,0 +1,14 @@
+node_modules/
+public
+
+.gitifgnore
+.prettierignore
+
+.eslintrc.js
+.prettier.js
+tsconfig.json
+
+package.json
+package-lock.json
+
+README.md
