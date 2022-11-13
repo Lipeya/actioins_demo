@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: |
+        docker login -u ${{secret.USERNAME}} -p ${{ secrets.PASSWORD }}
+        docker build -t action-demo .
+        docker tag spring-cicd ${{secret.USERNAME}}/action-demo:${GITHUB_SHA::7}
+        docker push ${{secret.USERNAME}}/action-demo:${GITHUB_SHA::7}
