@@ -15,12 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
-        docker login -u ${{secrets.USERNAME}} -p ${{ secrets.PASSWORD }}
-        docker build -t action-demo .
-        docker tag action-demo ${{secrets.USERNAME}}/action-demo:${GITHUB_SHA::7}
-        docker push ${{secrets.USERNAME}}/action-demo:${GITHUB_SHA::7}
     - name: Deploy
       uses: cross-the-world/ssh-pipeline@v1.2.0
       with:
@@ -29,7 +23,5 @@ jobs:
         pass: ${{secrets.N2PW}}
         key: ${{secrets.SECRETS}}
         script: |
-          docker pull reljacer/action-demo:${GITHUB_SHA::7}
-          docker tag reljacer/action-demo:${GITHUB_SHA::7} action-demo
           docker stop server
           docker run -d --name server -p 8080:8000 --security-opt seccomp=unconfined action-demo
