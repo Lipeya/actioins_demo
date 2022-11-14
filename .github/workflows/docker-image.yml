@@ -24,4 +24,4 @@ jobs:
         key: ${{secrets.SECRETS}}
         script: |
           docker stop server
-          docker run -d --name server -p 8080:8000 --security-opt seccomp=unconfined action-demo
+          docker run -d --rm --name server -p 8080:8000 --security-opt seccomp=unconfined action-demo
