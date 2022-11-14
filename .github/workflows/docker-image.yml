@@ -21,14 +21,14 @@ jobs:
         docker tag action-demo ${{secrets.USERNAME}}/action-demo:${GITHUB_SHA::7}
         docker push ${{secrets.USERNAME}}/action-demo:${GITHUB_SHA::7}
     - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{secrets.HOST}}
-          username: root
-          key: ${{ secrets.PRIVATE_KEY }}
-          envs: GITHUB_SHA
-          script: |
-            docker pull reljacer/action-demo:${GITHUB_SHA::7}
-            docker tag reljacer/action-demo:${GITHUB_SHA::7} action-demo
-            docker stop server
-            docker run -d --rm --name server -p 8080:8000 action-demo
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{secrets.HOST}}
+        username: root
+        key: ${{ secrets.PRIVATE_KEY }}
+        envs: GITHUB_SHA
+        script: |
+          docker pull reljacer/action-demo:${GITHUB_SHA::7}
+          docker tag reljacer/action-demo:${GITHUB_SHA::7} action-demo
+          docker stop server
+          docker run -d --rm --name server -p 8080:8000 action-demo
