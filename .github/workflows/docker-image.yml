@@ -19,7 +19,6 @@ jobs:
       with:
         host: ${{secrets.HOST}}
         username: root
-        password : ${{secrets.N2PW}}
         key: ${{secrets.SECRETS }}
         envs: GITHUB_SHA
         script: |
