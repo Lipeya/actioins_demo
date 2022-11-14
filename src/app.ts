@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
 app.use("/",(req,res,next)=>{
-  res.send("hello");
+  res.send("hello_cicd");
 });
 
 // error handler
