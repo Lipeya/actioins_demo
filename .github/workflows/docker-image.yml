@@ -18,7 +18,7 @@ jobs:
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
       with:
         host: ${{secrets.HOST}}
-        username: root
+        user: root
         pass: ${{secrets.N2PW}}
         key: ${{secrets.SECRETS}}
         envs: GITHUB_SHA
