@@ -19,7 +19,7 @@ jobs:
       with:
         host: ${{secrets.HOST}}
         username: root
-        key: ${{ secrets.SECRETS }}
+        key: ${{secrets.SECRETS}}
         envs: GITHUB_SHA
         script: |
           docker pull reljacer/action-demo:${GITHUB_SHA::7}
