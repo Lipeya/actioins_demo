@@ -14,18 +14,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
-        docker login -u ${{secrets.USERNAME}} -p ${{ secrets.PASSWORD }}
-        docker build -t action-demo .
-        docker tag action-demo ${{secrets.USERNAME}}/action-demo:${GITHUB_SHA::7}
-        docker push ${{secrets.USERNAME}}/action-demo:${GITHUB_SHA::7}
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
         host: ${{secrets.HOST}}
         username: root
-        key: ${{ secrets.PRIVATE_KEY }}
+        key: ${{ secrets.SECRETS }}
         envs: GITHUB_SHA
         script: |
           docker pull reljacer/action-demo:${GITHUB_SHA::7}
