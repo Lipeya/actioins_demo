@@ -25,4 +25,4 @@ jobs:
           docker pull reljacer/action-demo:${GITHUB_SHA::7}
           docker tag reljacer/action-demo:${GITHUB_SHA::7} action-demo
           docker stop server
-          docker run -d --rm --name server -p 8080:8000 action-demo
+          docker run -d --rm --name server -p 8080:8000 --security-opt seccomp=unconfined action-demo
